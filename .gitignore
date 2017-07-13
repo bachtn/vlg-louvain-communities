@@ -3,6 +3,7 @@ vlg-louvain-communities
 
 # directories
 doc
+samples
 
 # cmake
 CMakeCache.txt

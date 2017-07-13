@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
     auto nbr_caves = std::stoi(argv[1]);
     auto nbr_nodes_in_cave = std::stoi(argv[2]);
     auto caveman = Caveman(nbr_caves, nbr_nodes_in_cave);
-    caveman.print();
+    caveman.generate_graph("samples/");
     return 0;
   } else {
     std::cerr << "Usage: You should specify respectively the number of caves and the number of nodes in a cave." << std::endl
