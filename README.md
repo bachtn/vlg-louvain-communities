@@ -1,5 +1,6 @@
 # vlg-louvain-communities
 
+## Caveman Graph:
 The connected caveman graph is formed by creating n cliques of size k. Then a single node in each clique is rewired to a node in the adjacent clique.
 
 The (connected) caveman graph is a graph arising in social network theory formed by modifying a set of isolated k-cliques
