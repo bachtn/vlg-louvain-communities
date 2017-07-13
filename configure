@@ -1,0 +1,6 @@
+#!/bin/sh
+
+make distclean
+cmake . -DCMAKE_BUILD_TYPE=DEBUG
+make
+./vlg-louvain-communities 3 4
