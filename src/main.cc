@@ -5,8 +5,8 @@
 int main(int argc, char** argv) {
   if (argc >= 3) {
     auto nbr_caves = std::stoi(argv[1]);
-    auto nbr_nodes_in_cave = std::stoi(argv[2]);
-    auto caveman = Caveman(nbr_caves, nbr_nodes_in_cave);
+    auto cave_size = std::stoi(argv[2]);
+    auto caveman = Caveman(nbr_caves, cave_size);
     caveman.generate_graph("samples/");
     return 0;
   } else {
