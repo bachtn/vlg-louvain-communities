@@ -59,3 +59,12 @@ Makefile*
 
 # QtCtreator CMake
 CMakeLists.txt.user*
+src/louvain_community/hierarchy
+src/louvain_community/convert
+src/louvain_community/community
+vlg-louvain-communities
+CMakeFiles/feature_tests.bin
+CMakeFiles/3.5.1/CMakeDetermineCompilerABI_CXX.bin
+CMakeFiles/3.5.1/CompilerIdC/a.out
+CMakeFiles/3.5.1/CompilerIdCXX/a.out
+CMakeFiles/3.5.1/CMakeDetermineCompilerABI_C.bin
