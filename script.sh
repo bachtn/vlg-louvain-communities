@@ -85,6 +85,7 @@ for GRAPH_IDX in $(seq 1 $NBR_GRAPHS); do
       EXEC_TIME=$(time (./$LOUVAIN_PATH/community $CURRENT_GRAPH_BINARY -l -1 1>/dev/null 2>/dev/null) 2>&1)
       echo "exec time = $EXEC_TIME nbr caves = $NBR_CAVES_IDX cave size = $CAVE_SIZE_IDX $EXEC_TIME"
       echo "$NBR_CAVES_IDX $CAVE_SIZE_IDX $EXEC_TIME" >> $RESULTS_FILE
+      rm $CURRENT_GRAPH_BINARY $CURRENT_GRAPH_FILENAME
     done
   done
 done
