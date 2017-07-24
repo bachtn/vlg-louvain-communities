@@ -5,9 +5,9 @@ LOUVAIN_PATH="src/louvain_community"
 GRAPH_FILENAME="samples/caveman_graph_"
 
 ############################## CLEAN FILES
-rm samples/*
-make distclean
-make clean -C $LOUVAIN_PATH
+# rm samples/*
+# make distclean
+# make clean -C $LOUVAIN_PATH
 
 ############################## COMPILE PROGRAM
 ### COMPILE GRAPH GENERATION PROGRAM
@@ -71,21 +71,19 @@ CAVE_SIZE_FINAL_VALUE=$(($CAVE_SIZE_START + $CAVE_SIZE_STEP * ($NBR_GRAPHS - 1))
 NBR_CAVES_FINAL_VALUE=$(($NBR_CAVES_START + $NBR_CAVES_STEP * ($NBR_GRAPHS - 1)))
 
 TIMEFORMAT="%3R";
-RESULTS_FILE="samples/results.txt"
+RESULTS_FILE="results.txt"
 touch $RESULTS_FILE
 
 # loop over the number of graphs to generate
-for GRAPH_IDX in $(seq 1 $NBR_GRAPHS); do
-  for ((NBR_CAVES_IDX = $NBR_CAVES_START; NBR_CAVES_IDX <= $NBR_CAVES_FINAL_VALUE;  NBR_CAVES_IDX += $NBR_CAVES_STEP)); do
-    for ((CAVE_SIZE_IDX = $CAVE_SIZE_START; CAVE_SIZE_IDX <= $CAVE_SIZE_FINAL_VALUE; CAVE_SIZE_IDX += $CAVE_SIZE_STEP)); do
-      ./vlg-louvain-communities $NBR_CAVES_IDX $CAVE_SIZE_IDX
-      CURRENT_GRAPH_FILENAME="${GRAPH_FILENAME}${NBR_CAVES_IDX}_${CAVE_SIZE_IDX}"
-      CURRENT_GRAPH_BINARY="${CURRENT_GRAPH_FILENAME}.bin"
-      ./$LOUVAIN_PATH/convert -i $CURRENT_GRAPH_FILENAME -o $CURRENT_GRAPH_BINARY
-      EXEC_TIME=$(time (./$LOUVAIN_PATH/community $CURRENT_GRAPH_BINARY -l -1 1>/dev/null 2>/dev/null) 2>&1)
-      echo "exec time = $EXEC_TIME nbr caves = $NBR_CAVES_IDX cave size = $CAVE_SIZE_IDX $EXEC_TIME"
-      echo "$NBR_CAVES_IDX $CAVE_SIZE_IDX $EXEC_TIME" >> $RESULTS_FILE
-      rm $CURRENT_GRAPH_BINARY $CURRENT_GRAPH_FILENAME
-    done
+for ((NBR_CAVES_IDX = $NBR_CAVES_START; NBR_CAVES_IDX <= $NBR_CAVES_FINAL_VALUE;  NBR_CAVES_IDX += $NBR_CAVES_STEP)); do
+  for ((CAVE_SIZE_IDX = $CAVE_SIZE_START; CAVE_SIZE_IDX <= $CAVE_SIZE_FINAL_VALUE; CAVE_SIZE_IDX += $CAVE_SIZE_STEP)); do
+    ./vlg-louvain-communities $NBR_CAVES_IDX $CAVE_SIZE_IDX
+    CURRENT_GRAPH_FILENAME="${GRAPH_FILENAME}${NBR_CAVES_IDX}_${CAVE_SIZE_IDX}"
+    CURRENT_GRAPH_BINARY="${CURRENT_GRAPH_FILENAME}.bin"
+    ./$LOUVAIN_PATH/convert -i $CURRENT_GRAPH_FILENAME -o $CURRENT_GRAPH_BINARY
+    EXEC_TIME=$(time (./$LOUVAIN_PATH/community $CURRENT_GRAPH_BINARY -l -1 1>/dev/null 2>/dev/null) 2>&1)
+    echo "exec time = $EXEC_TIME nbr caves = $NBR_CAVES_IDX cave size = $CAVE_SIZE_IDX $EXEC_TIME"
+    echo "$NBR_CAVES_IDX $CAVE_SIZE_IDX $EXEC_TIME" >> $RESULTS_FILE
+    rm $CURRENT_GRAPH_BINARY $CURRENT_GRAPH_FILENAME
   done
 done
