@@ -1,6 +1,4 @@
 #!/bin/sh
 
-make distclean
-cmake . -DCMAKE_BUILD_TYPE=DEBUG
-make
-./vlg-louvain-communities 3 4
+./script.sh --nbr_graphs=1 --cave_size_start=2 --nbr_caves_start=3 --cave_size_step=2 --nbr_caves_step=2
+

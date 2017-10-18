@@ -8,6 +8,7 @@ GRAPH_FILENAME="samples/caveman_graph_"
 # rm samples/*
 # make distclean
 # make clean -C $LOUVAIN_PATH
+mkdir samples
 
 ############################## COMPILE PROGRAM
 ### COMPILE GRAPH GENERATION PROGRAM
